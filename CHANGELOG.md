@@ -1,5 +1,11 @@
 # eslint-plugin-svelte-sort-attributes
 
+## 1.2.0
+
+### Minor Changes
+
+- chore: update deps ([`7df61e6`](https://github.com/mikededo/eslint-plugin-svelte-sort-attributes/commit/7df61e6465b3bec8f27f54ad9713af5303ff3d9a))
+
 ## 1.1.5
 
 ### Patch Changes
