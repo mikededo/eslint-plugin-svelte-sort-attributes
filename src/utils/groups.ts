@@ -22,8 +22,8 @@ export const useGroups = ({ groups, matcher }: UseGroupProps) => {
 
   const setCustomGroups = (
     customGroups:
-      | { [key: string]: string | string[] }
-      | undefined,
+      | { [key: string]: string | string[] } |
+      undefined,
     name: string,
     params: { override?: boolean } = {}
   ) => {

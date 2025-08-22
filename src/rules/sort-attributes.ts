@@ -27,11 +27,11 @@ import {
 
 type Context = Readonly<TSESLint.RuleContext<MESSAGE_ID, Options<string[]>>>;
 type Group<T extends string[]> =
-  | 'multiline'
-  | 'shorthand'
-  | 'svelte-shorthand'
-  | 'unknown'
-  | T[number];
+  | 'multiline' |
+  'shorthand' |
+  'svelte-shorthand' |
+  'unknown' |
+  T[number];
 type GroupNameAttribute = |
   AST.SvelteAttribute |
   AST.SvelteDirective |
@@ -40,8 +40,8 @@ type GroupNameAttribute = |
   AST.SvelteSpecialDirective |
   AST.SvelteStyleDirective;
 type MESSAGE_ID =
-  | 'unexpectedSvelteAttributesGroupOrder'
-  | 'unexpectedSvelteAttributesOrder';
+  | 'unexpectedSvelteAttributesGroupOrder' |
+  'unexpectedSvelteAttributesOrder';
 
 type Options<T extends string[]> = [
   Partial<{

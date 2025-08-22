@@ -15,9 +15,9 @@ export type BaseCompareOptions = {
 };
 
 export type CompareOptions =
-  | AlphabeticalCompareOptions
-  | LineLengthCompareOptions
-  | NaturalCompareOptions;
+  | AlphabeticalCompareOptions |
+  LineLengthCompareOptions |
+  NaturalCompareOptions;
 
 export type ExtraOptions<T extends SortingNode> = {
   /**
