@@ -1,5 +1,4 @@
-import typescriptParser from '@typescript-eslint/parser';
-import { RuleTester } from '@typescript-eslint/rule-tester';
+import { RuleTester } from 'eslint';
 import path from 'node:path';
 import svelteParser from 'svelte-eslint-parser';
 import { dedent } from 'ts-dedent';
@@ -8,20 +7,62 @@ import rule from './sort-attributes';
 
 const ruleName = 'sort-svelte-attributes';
 
+const parserWithEslint10Compat = {
+  ...svelteParser,
+  parseForESLint(code: string, options: Record<string, unknown>) {
+    const parsed = svelteParser.parseForESLint(code, options);
+    const maybeScopeManager = parsed.scopeManager as
+      | {
+        addGlobals?: (names: string[]) => void;
+        globalScope?: { set?: Map<string, any>; variables?: any[] };
+        scopes?: Array<{ set?: Map<string, any>; variables?: any[] }>;
+      } |
+      undefined;
+
+    if (maybeScopeManager && typeof maybeScopeManager.addGlobals !== 'function') {
+      maybeScopeManager.addGlobals = (names: string[]) => {
+        const globalScope = maybeScopeManager.globalScope ?? maybeScopeManager.scopes?.at(0);
+        if (!globalScope) {
+          return;
+        }
+
+        globalScope.set ??= new Map();
+        globalScope.variables ??= [];
+
+        for (const name of names) {
+          if (!globalScope.set.has(name)) {
+            const variable = {
+              defs: [],
+              eslintExplicitGlobal: false,
+              eslintExplicitGlobalComments: undefined,
+              eslintImplicitGlobalSetting: undefined,
+              eslintUsed: false,
+              identifiers: [],
+              name,
+              references: [],
+              writeable: false
+            };
+            globalScope.set.set(name, variable);
+            globalScope.variables.push(variable);
+          }
+        }
+      };
+    }
+
+    return parsed;
+  }
+};
+
 describe(ruleName, () => {
-  RuleTester.afterAll = afterAll;
   RuleTester.describe = describe;
   RuleTester.it = it;
 
   const ruleTester = new RuleTester({
     languageOptions: {
-      parser: svelteParser,
+      parser: parserWithEslint10Compat,
       parserOptions: {
-        parser: {
-          project: './tsconfig.json',
-          ts: typescriptParser,
-          tsconfigRootDir: path.join(__dirname, '../fixtures')
-        }
+        project: './tsconfig.json',
+        tsconfigRootDir: path.join(__dirname, '../fixtures')
       }
     }
   });

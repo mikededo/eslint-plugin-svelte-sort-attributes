@@ -1,9 +1,10 @@
-import type * as general from './general';
-
 import type { TSESTree } from '@typescript-eslint/types';
 import type { TSESLint } from '@typescript-eslint/utils';
-import { AST_TOKEN_TYPES, ASTUtils } from '@typescript-eslint/utils';
 import type { Mock } from 'vitest';
+
+import { AST_TOKEN_TYPES, ASTUtils } from '@typescript-eslint/utils';
+
+import type * as general from './general';
 
 import { getNodeRange, rangeToDiff } from './node-range';
 

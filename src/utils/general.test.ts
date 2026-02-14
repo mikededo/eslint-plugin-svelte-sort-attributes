@@ -1,7 +1,8 @@
 import type { TSESTree } from '@typescript-eslint/types';
 import type { TSESLint } from '@typescript-eslint/utils';
-import { minimatch } from 'minimatch';
 import type { Mock } from 'vitest';
+
+import { minimatch } from 'minimatch';
 
 import {
   complete,

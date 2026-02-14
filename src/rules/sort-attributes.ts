@@ -8,10 +8,11 @@
  * eslint-plugin-perfectionist did
  */
 
-import { ESLintUtils } from '@typescript-eslint/utils';
 import type { TSESLint } from '@typescript-eslint/utils';
-import path from 'node:path';
 import type { AST } from 'svelte-eslint-parser';
+
+import { ESLintUtils } from '@typescript-eslint/utils';
+import path from 'node:path';
 
 import {
   complete,
@@ -92,16 +93,16 @@ export default ESLintUtils.RuleCreator((name) => name)<Options<string[]>, MESSAG
           );
 
           const parts: Array<Array<{
+            group?: string;
             name: string;
             node: any;
             size: number;
-            group?: string;
           }>> = node.attributes.reduce(
             (acc: Array<Array<{
+              group?: string;
               name: string;
               node: any;
               size: number;
-              group?: string;
             }>>, attribute) => {
               if (attribute.type === 'SvelteSpreadAttribute') {
                 acc.push([]);

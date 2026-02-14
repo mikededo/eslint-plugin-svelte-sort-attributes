@@ -7,11 +7,11 @@ export type AlphabeticalCompareOptions = {
 } & BaseCompareOptions;
 
 export type BaseCompareOptions = {
-  order: 'asc' | 'desc';
   /**
    * Custom function to get the value of the node. By default, returns the node's name.
    */
   nodeValueGetter?: (node: SortingNode) => string;
+  order: 'asc' | 'desc';
 };
 
 export type CompareOptions =
@@ -31,8 +31,8 @@ export type ExtraOptions<T extends SortingNode> = {
 export type GroupOptions = { groups: (string | string[])[] };
 
 export type LineLengthCompareOptions = {
-  type: 'line-length';
   maxLineLength?: number;
+  type: 'line-length';
 } & BaseCompareOptions;
 
 export type NaturalCompareOptions = {
@@ -53,11 +53,11 @@ export type Settings = Partial<{
 }>;
 
 export type SortingNode<Node extends TSESTree.Node = TSESTree.Node> = {
+  group?: string;
+  hasMultipleImportDeclarations?: boolean;
   name: string;
   node: Node;
   size: number;
-  group?: string;
-  hasMultipleImportDeclarations?: boolean;
 };
 
 export type UseGroupProps = {

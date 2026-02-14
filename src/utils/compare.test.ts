@@ -1,10 +1,10 @@
-import type { CompareOptions, SortingNode } from '../types';
-import type * as general from './general';
-import type * as nodeRange from './node-range';
-
 import type { TSESTree } from '@typescript-eslint/types';
 import type { TSESLint } from '@typescript-eslint/utils';
 import type { Mock } from 'vitest';
+
+import type { CompareOptions, SortingNode } from '../types';
+import type * as general from './general';
+import type * as nodeRange from './node-range';
 
 import { compare, getFormatStringFunc, makeFixes, sortNodes } from './compare';
 

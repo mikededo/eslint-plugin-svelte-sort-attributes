@@ -110,19 +110,9 @@ export default antfu({
           'error',
           {
             environment: 'bun',
-            groups: [
-              'style',
-              'internal-type',
-              ['parent-type', 'sibling-type', 'index-type'],
-              ['builtin', 'external'],
-              'internal',
-              ['parent', 'sibling', 'index'],
-              'object',
-              'unknown'
-            ],
             ignoreCase: true,
             maxLineLength: undefined,
-            newlinesBetween: 'always',
+            newlinesBetween: 1,
             order: 'asc',
             type: 'alphabetical'
           }
@@ -130,8 +120,6 @@ export default antfu({
         'perfectionist/sort-object-types': [
           'error',
           {
-            groupKind: 'required-first',
-            groups: ['unknown', 'multiline'],
             ignoreCase: true,
             order: 'asc',
             partitionByNewLine: true,

@@ -1,8 +1,9 @@
-import type { Settings } from '../types';
-
 import type { TSESTree } from '@typescript-eslint/types';
 import type { TSESLint } from '@typescript-eslint/utils';
+
 import { minimatch } from 'minimatch';
+
+import type { Settings } from '../types';
 
 export const matches = (
   value: string,

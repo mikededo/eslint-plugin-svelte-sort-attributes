@@ -1,7 +1,8 @@
-import type { CompareOptions, SortingNode } from '../types';
-
 import type { TSESLint } from '@typescript-eslint/utils';
+
 import naturalCompare from 'natural-compare-lite';
+
+import type { CompareOptions, SortingNode } from '../types';
 
 import { getCommentAfter } from './general';
 import { getNodeRange } from './node-range';
