@@ -1,21 +1,20 @@
 import type { TSESTree } from '@typescript-eslint/types';
-import type { TSESLint } from '@typescript-eslint/utils';
+import type * as TSESLint from '@typescript-eslint/utils/ts-eslint';
 import type { Mock } from 'vitest';
 
-import { AST_TOKEN_TYPES, ASTUtils } from '@typescript-eslint/utils';
+import { AST_TOKEN_TYPES } from '@typescript-eslint/types';
+import * as ASTUtils from '@typescript-eslint/utils/ast-utils';
 
 import type * as general from './general';
 
 import { getNodeRange, rangeToDiff } from './node-range';
 
 // Mock dependencies
-vi.mock('@typescript-eslint/utils', async (original) => ({
+vi.mock('@typescript-eslint/utils/ast-utils', async (original) => ({
   ...(await original()),
-  ASTUtils: {
-    isClosingParenToken: vi.fn(),
-    isOpeningParenToken: vi.fn(),
-    isParenthesized: vi.fn()
-  }
+  isClosingParenToken: vi.fn(),
+  isOpeningParenToken: vi.fn(),
+  isParenthesized: vi.fn()
 }));
 
 const getCommentsBefore = vi.hoisted(vi.fn<typeof general.getCommentsBefore>);

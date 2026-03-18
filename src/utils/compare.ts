@@ -1,4 +1,4 @@
-import type { TSESLint } from '@typescript-eslint/utils';
+import type * as TSESLint from '@typescript-eslint/utils/ts-eslint';
 
 import naturalCompare from 'natural-compare-lite';
 

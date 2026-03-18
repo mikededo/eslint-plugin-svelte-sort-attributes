@@ -8,10 +8,10 @@
  * eslint-plugin-perfectionist did
  */
 
-import type { TSESLint } from '@typescript-eslint/utils';
+import type * as TSESLint from '@typescript-eslint/utils/ts-eslint';
 import type { AST } from 'svelte-eslint-parser';
 
-import { ESLintUtils } from '@typescript-eslint/utils';
+import { RuleCreator } from '@typescript-eslint/utils/eslint-utils';
 import path from 'node:path';
 
 import {
@@ -33,13 +33,10 @@ type Group<T extends string[]> =
   'svelte-shorthand' |
   'unknown' |
   T[number];
-type GroupNameAttribute = |
-  AST.SvelteAttribute |
-  AST.SvelteDirective |
-  AST.SvelteGenericsDirective |
-  AST.SvelteShorthandAttribute |
-  AST.SvelteSpecialDirective |
-  AST.SvelteStyleDirective;
+type GroupNameAttribute = Exclude<
+  AST.SvelteStartTag['attributes'][number],
+  AST.SvelteSpreadAttribute
+>;
 type MESSAGE_ID =
   | 'unexpectedSvelteAttributesGroupOrder' |
   'unexpectedSvelteAttributesOrder';
@@ -57,6 +54,10 @@ type Options<T extends string[]> = [
 ];
 
 const getGroupName = (context: Context, attribute: GroupNameAttribute) => {
+  if (!('key' in attribute)) {
+    return context.sourceCode.text.slice(...attribute.range);
+  }
+
   if (attribute.key.type === 'SvelteSpecialDirectiveKey') {
     return context.sourceCode.text.slice(...attribute.key.range);
   } else if (typeof attribute.key.name === 'string') {
@@ -66,7 +67,7 @@ const getGroupName = (context: Context, attribute: GroupNameAttribute) => {
   return context.sourceCode.text.slice(...attribute.key.range);
 };
 
-export default ESLintUtils.RuleCreator((name) => name)<Options<string[]>, MESSAGE_ID>({
+export default RuleCreator((name) => name)<Options<string[]>, MESSAGE_ID>({
   create: (context) => {
     if (path.extname(context.filename) !== '.svelte') {
       return {};

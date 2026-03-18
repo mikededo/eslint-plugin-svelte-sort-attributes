@@ -5,6 +5,8 @@ import { dedent } from 'ts-dedent';
 
 import rule from './sort-attributes';
 
+const ruleForRuleTester = rule as any;
+
 const ruleName = 'sort-svelte-attributes';
 
 const parserWithEslint10Compat = {
@@ -77,7 +79,7 @@ describe(ruleName, () => {
 
     ruleTester.run(
       `${ruleName}(${type}): sorts props in svelte components`,
-      rule,
+      ruleForRuleTester,
       {
         invalid: [
           {
@@ -133,7 +135,7 @@ describe(ruleName, () => {
 
     ruleTester.run(
       `${ruleName}(${type}): works with spread attributes`,
-      rule,
+      ruleForRuleTester,
       {
         invalid: [
           {
@@ -188,7 +190,7 @@ describe(ruleName, () => {
 
     ruleTester.run(
       `${ruleName}(${type}): works with directives`,
-      rule,
+      ruleForRuleTester,
       {
         invalid: [
           {
@@ -255,7 +257,7 @@ describe(ruleName, () => {
 
     ruleTester.run(
       `${ruleName}(${type}): allows to set shorthand attributes position`,
-      rule,
+      ruleForRuleTester,
       {
         invalid: [
           {
@@ -344,7 +346,7 @@ describe(ruleName, () => {
 
     ruleTester.run(
       `${ruleName}(${type}): allows to set multiline attributes position`,
-      rule,
+      ruleForRuleTester,
       {
         invalid: [
           {
@@ -432,7 +434,7 @@ describe(ruleName, () => {
 
     ruleTester.run(
       `${ruleName}(${type}): allows to set custom groups`,
-      rule,
+      ruleForRuleTester,
       {
         invalid: [
           {
@@ -522,7 +524,7 @@ describe(ruleName, () => {
 
     ruleTester.run(
       `${ruleName}(${type}): allows to use regex matcher for custom groups`,
-      rule,
+      ruleForRuleTester,
       {
         invalid: [],
         valid: [
@@ -557,7 +559,7 @@ describe(ruleName, () => {
 
     ruleTester.run(
       `${ruleName}(${type}): allows to trim special characters`,
-      rule,
+      ruleForRuleTester,
       {
         invalid: [],
         valid: [
@@ -587,7 +589,7 @@ describe(ruleName, () => {
 
     ruleTester.run(
       `${ruleName}(${type}): allows to remove special characters`,
-      rule,
+      ruleForRuleTester,
       {
         invalid: [],
         valid: [
@@ -624,7 +626,7 @@ describe(ruleName, () => {
 
     ruleTester.run(
       `${ruleName}(${type}): sorts props in svelte components`,
-      rule,
+      ruleForRuleTester,
       {
         invalid: [
           {
@@ -680,7 +682,7 @@ describe(ruleName, () => {
 
     ruleTester.run(
       `${ruleName}(${type}): works with spread attributes`,
-      rule,
+      ruleForRuleTester,
       {
         invalid: [
           {
@@ -735,7 +737,7 @@ describe(ruleName, () => {
 
     ruleTester.run(
       `${ruleName}(${type}): works with directives`,
-      rule,
+      ruleForRuleTester,
       {
         invalid: [
           {
@@ -802,7 +804,7 @@ describe(ruleName, () => {
 
     ruleTester.run(
       `${ruleName}(${type}): allows to set shorthand attributes position`,
-      rule,
+      ruleForRuleTester,
       {
         invalid: [
           {
@@ -891,7 +893,7 @@ describe(ruleName, () => {
 
     ruleTester.run(
       `${ruleName}(${type}): allows to set multiline attributes position`,
-      rule,
+      ruleForRuleTester,
       {
         invalid: [
           {
@@ -979,7 +981,7 @@ describe(ruleName, () => {
 
     ruleTester.run(
       `${ruleName}(${type}): allows to set custom groups`,
-      rule,
+      ruleForRuleTester,
       {
         invalid: [
           {
@@ -1077,7 +1079,7 @@ describe(ruleName, () => {
 
     ruleTester.run(
       `${ruleName}(${type}): sorts props in svelte components`,
-      rule,
+      ruleForRuleTester,
       {
         invalid: [
           {
@@ -1133,7 +1135,7 @@ describe(ruleName, () => {
 
     ruleTester.run(
       `${ruleName}(${type}): works with spread attributes`,
-      rule,
+      ruleForRuleTester,
       {
         invalid: [
           {
@@ -1188,7 +1190,7 @@ describe(ruleName, () => {
 
     ruleTester.run(
       `${ruleName}(${type}): works with directives`,
-      rule,
+      ruleForRuleTester,
       {
         invalid: [
           {
@@ -1255,7 +1257,7 @@ describe(ruleName, () => {
 
     ruleTester.run(
       `${ruleName}(${type}): allows to set shorthand attributes position`,
-      rule,
+      ruleForRuleTester,
       {
         invalid: [
           {
@@ -1344,7 +1346,7 @@ describe(ruleName, () => {
 
     ruleTester.run(
       `${ruleName}(${type}): allows to set multiline attributes position`,
-      rule,
+      ruleForRuleTester,
       {
         invalid: [
           {
@@ -1432,7 +1434,7 @@ describe(ruleName, () => {
 
     ruleTester.run(
       `${ruleName}(${type}): allows to set custom groups`,
-      rule,
+      ruleForRuleTester,
       {
         invalid: [
           {
@@ -1524,7 +1526,7 @@ describe(ruleName, () => {
   describe(`${ruleName}: validating group configuration`, () => {
     ruleTester.run(
       `${ruleName}: allows predefined groups and defined custom groups`,
-      rule,
+      ruleForRuleTester,
       {
         invalid: [],
         valid: [
@@ -1560,7 +1562,7 @@ describe(ruleName, () => {
   describe(`${ruleName}: misc`, () => {
     ruleTester.run(
       `${ruleName}: works only with .svelte files`,
-      rule,
+      ruleForRuleTester,
       {
         invalid: [],
         valid: [
@@ -1582,7 +1584,7 @@ describe(ruleName, () => {
 
     ruleTester.run(
       `${ruleName}: works with special directive keys`,
-      rule,
+      ruleForRuleTester,
       {
         invalid: [],
         valid: [

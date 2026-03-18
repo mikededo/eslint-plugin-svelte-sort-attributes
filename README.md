@@ -17,7 +17,9 @@ With your package manager:
 bun add -d eslint-plugin-svelte-sort-attributes
 
 ```
-In your flat `eslint` config:
+Compatible with `eslint` `^9 || ^10` (flat config only).
+
+In your flat ESLint config:
 
 ```javascript
 import svelteSortAttributes from 'eslint-plugin-svelte-sort-attributes';
@@ -34,18 +36,3 @@ export default [
   },
 ]
 ```
-
-In your legacy `eslint` config:
-
-```javascript
-module.exports = {
-  plugins: [ 'svelte-sort-attributes' ],
-  rules: {
-    'svelte-sort-attributes/sort-attributes': [
-      'error',
-      { type: 'natural', order: 'asc' }
-    ]
-  }
-}
-```
-

@@ -1,7 +1,7 @@
 import type { TSESTree } from '@typescript-eslint/types';
-import type { TSESLint } from '@typescript-eslint/utils';
+import type * as TSESLint from '@typescript-eslint/utils/ts-eslint';
 
-import { ASTUtils } from '@typescript-eslint/utils';
+import * as ASTUtils from '@typescript-eslint/utils/ast-utils';
 
 import { getCommentsBefore, isPartitionComment } from './general';
 

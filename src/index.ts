@@ -8,10 +8,7 @@
  * eslint-plugin-perfectionist did
  */
 
-import type {
-  ClassicConfig,
-  FlatConfig
-} from '@typescript-eslint/utils/ts-eslint';
+import type { FlatConfig } from '@typescript-eslint/utils/ts-eslint';
 
 import { version } from '../package.json';
 import sortSvelteAttributes from './rules/sort-attributes';
@@ -51,19 +48,12 @@ const createConfig = (options: BaseOptions): FlatConfig.Config => ({
   },
   rules: getRules(options)
 });
-const createLegacyConfig = (options: BaseOptions): ClassicConfig.Config => ({
-  plugins: [name],
-  rules: getRules(options)
-});
 
 export default {
   ...plugin,
   configs: {
     'recommended-alphabetical': createConfig({ order: 'asc', type: 'alphabetical' }),
-    'recommended-alphabetical-legacy': createLegacyConfig({ order: 'asc', type: 'alphabetical' }),
     'recommended-line-length': createConfig({ order: 'desc', type: 'line-length' }),
-    'recommended-line-length-legacy': createLegacyConfig({ order: 'desc', type: 'line-length' }),
-    'recommended-natural': createConfig({ order: 'asc', type: 'natural' }),
-    'recommended-natural-legacy': createLegacyConfig({ order: 'asc', type: 'natural' })
+    'recommended-natural': createConfig({ order: 'asc', type: 'natural' })
   }
 };
