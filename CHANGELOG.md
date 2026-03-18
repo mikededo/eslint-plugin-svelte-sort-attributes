@@ -1,5 +1,21 @@
 # eslint-plugin-svelte-sort-attributes
 
+## 2.0.0
+
+### Major Changes
+
+- Migrate plugin runtime to be compatible with ESLint v10 while preserving ESLint v9 support. ([`03d33fa`](https://github.com/mikededo/eslint-plugin-svelte-sort-attributes/commit/03d33fa9e10ebac1081b4b84b7341092080fce7d))
+
+  Breaking changes:
+
+  - Remove legacy `.eslintrc` preset exports (`recommended-*-legacy`).
+  - Document flat-config usage only.
+
+  Internal/runtime changes:
+
+  - Replace root `@typescript-eslint/utils` runtime imports with stable subpath imports.
+  - Update `@typescript-eslint/types` and `@typescript-eslint/utils` to versions that declare ESLint v10 support.
+
 ## 1.3.0
 
 ### Minor Changes
